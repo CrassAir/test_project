@@ -1,0 +1,142 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+}
+
+interface Pagination {
+    offset: Int!
+    limit: Int!
+    count: Int!
+    ids: [String!]!
+}
+
+#type Device {
+#    id: ID!
+#    name: String!
+#    type: String
+#    parentId: String
+#    deviceId: String
+#    cpId: String
+#    circuitBreaker: String
+#    meter: String
+#    data: ChargingPointDeviceCircuitBreakerDeviceMeter!
+#}
+#
+#union ChargingPointDeviceCircuitBreakerDeviceMeter = ChargingPoint
+
+
+type ChargingPointPagination implements Pagination {
+    offset: Int!
+    limit: Int!
+    count: Int!
+    ids: [String!]!
+    data: [ChargingPoint]!
+}
+
+type ChargePointPagination implements Pagination {
+    offset: Int!
+    count: Int!
+    ids: [String!]!
+    limit: Int!
+    data: [ChargingPoint]!
+}
+
+type ConnectorPagination implements Pagination {
+    offset: Int!
+    count: Int!
+    ids: [String!]!
+    limit: Int!
+    data: [ChargingPointConnector]!
+}
+
+type Tariff {
+    id: ID!
+    productName: String!
+    uom: String!
+    price: Float!
+    threshold: Int
+}
+
+type ChargingPointConnector {
+    id: ID!
+    power: Float
+    typeId: Int
+    statusId: Int
+    plugTypeId: Int
+    cpEvseId: Int
+    cpId: Int
+    number: String
+    amperage: Int
+    plugType: String
+    status: String
+    type: String
+    chargingPoint: ChargingPoint
+    tariffs: [Tariff!]!
+}
+
+type Location {
+    id: ID!
+    title: String!
+    locationId: String!
+    cpIds: [String!]!
+    constraintIds: [String!]!
+    devicesIds: [String!]!
+    optimization: String
+    targetPower: Int
+    latitude: Float!
+    longitude: Float!
+    address: String!
+    parkingAccess: String!
+    workingHoursStart: String!
+    workingHoursEnd: String!
+    region: String!
+    regionId: String!
+    chargingPoints: ChargingPointPagination!
+}
+
+type ChargingPoint {
+    id: ID!
+    boxId: ID!
+    cpNumber: String
+    locationId: String
+    connectorsIds: [String!]!
+    cpType: String
+    power: Float
+    reservationLimit: Int
+    statusId: Int
+    modelId: Int
+    model: String
+    ownerCompanyId: Int
+    status: String
+    location: Location!
+    connectors: ConnectorPagination!
+}
+
+type ChargingPoints {
+    companyId: Int
+    connectorTypes: [String!]
+    cpTypes: [String!]
+    limit: Int!
+    offset: Int!
+    sortByDistance: Boolean!
+    workingHoursEnd: Float
+    workingHoursStart: Float
+}
+
+#query chargingPoint(id: String!): ChargingPoint!
+type Query {
+    chargingPoints(
+        companyId: Int = null
+        connectorTypes: [String!] = null
+        cpTypes: [String!] = null
+        limit: Int! = 1000
+        offset: Int! = 0
+        sortByDistance: Boolean! = false
+        workingHoursEnd: Float = null
+        workingHoursStart: Float = null
+    ): ChargingPointPagination!
+
+    chargingPoints(id: String!): ChargingPoints!
+}

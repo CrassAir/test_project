@@ -1,0 +1,11 @@
+query ChargingPoints {
+    chargingPoints{
+        data {
+            id
+            location {
+                region
+                title
+            }
+        }
+    }
+}
