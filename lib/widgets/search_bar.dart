@@ -13,6 +13,8 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
         child: SearchBar(
+          backgroundColor: MaterialStatePropertyAll(Theme.of(context).cardColor),
+          elevation: const MaterialStatePropertyAll(0),
           hintText: 'Поиск...',
             trailing: [
       Padding(

@@ -1,8 +1,14 @@
+import 'package:ferry/ferry.dart';
+import 'package:gql_http_link/gql_http_link.dart';
+
 class AppConfig{
-  static const String APP_URL = 'http://85.192.132.219';
-  static const String AUTH_PORT = ':6001';
-  static const String ORG_PORT = ':6002';
-  static const String STORE_PORT = ':6012';
-  // static const String APP_URL = 'http://test.ecoferma56.ru';
-  static const String API_URL = 'api/';
+  static const String APP_URL = 'https://punkt-e.io';
+  static const String API_URL = '/api/v2/';
+
+  static Client initClient() {
+    final link = HttpLink(APP_URL + API_URL);
+    final client = Client(link: link);
+    return client;
+  }
 }
+

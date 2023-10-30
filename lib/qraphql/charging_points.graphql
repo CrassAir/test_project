@@ -1,10 +1,14 @@
-query ChargingPoints {
-    chargingPoints{
+query ChargingPoints($offset:Int!, $limit:Int!) {
+    chargingPoints(offset: $offset, limit: $limit) {
+        count
         data {
-            id
+            cpType
+            cpNumber
+            power
+            statusId
             location {
-                region
                 title
+                address
             }
         }
     }

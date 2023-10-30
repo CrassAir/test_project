@@ -869,6 +869,120 @@ const ChargingPoints = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
+const Query = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'Query'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'chargingPoints'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'companyId'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Int'),
+            isNonNull: false,
+          ),
+          defaultValue: _i1.NullValueNode(),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectorTypes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: _i1.NullValueNode(),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'cpTypes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+            type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'),
+              isNonNull: true,
+            ),
+            isNonNull: false,
+          ),
+          defaultValue: _i1.NullValueNode(),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'limit'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Int'),
+            isNonNull: true,
+          ),
+          defaultValue: _i1.IntValueNode(value: '1000'),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'offset'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Int'),
+            isNonNull: true,
+          ),
+          defaultValue: _i1.IntValueNode(value: '0'),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'sortByDistance'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Boolean'),
+            isNonNull: true,
+          ),
+          defaultValue: _i1.BooleanValueNode(value: false),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'workingHoursEnd'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Float'),
+            isNonNull: false,
+          ),
+          defaultValue: _i1.NullValueNode(),
+        ),
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'workingHoursStart'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Float'),
+            isNonNull: false,
+          ),
+          defaultValue: _i1.NullValueNode(),
+        ),
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ChargingPointPagination'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'chargingPoints'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'String'),
+            isNonNull: true,
+          ),
+          defaultValue: null,
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'ChargingPoints'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const document = _i1.DocumentNode(definitions: [
   cacheControl,
   CacheControlScope,
@@ -881,4 +995,5 @@ const document = _i1.DocumentNode(definitions: [
   Location,
   ChargingPoint,
   ChargingPoints,
+  Query,
 ]);
