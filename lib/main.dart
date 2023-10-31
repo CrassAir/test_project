@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:test_project/routes.dart';
 import 'package:test_project/theme.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -19,6 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isDarkMode = false;
+  final platform = GetPlatform.isWeb;
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'Test Project',
       debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.native,
+      defaultTransition: platform ? Transition.noTransition : Transition.native,
       transitionDuration: const Duration(milliseconds: 400),
       theme: Styles.lightMode(context),
       darkTheme: Styles.darkMode(context),

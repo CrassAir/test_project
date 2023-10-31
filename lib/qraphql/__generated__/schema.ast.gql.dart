@@ -963,7 +963,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
       ),
     ),
     _i1.FieldDefinitionNode(
-      name: _i1.NameNode(value: 'chargingPoints'),
+      name: _i1.NameNode(value: 'chargingPoint'),
       directives: [],
       args: [
         _i1.InputValueDefinitionNode(
@@ -977,7 +977,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
         )
       ],
       type: _i1.NamedTypeNode(
-        name: _i1.NameNode(value: 'ChargingPoints'),
+        name: _i1.NameNode(value: 'ChargingPoint'),
         isNonNull: true,
       ),
     ),

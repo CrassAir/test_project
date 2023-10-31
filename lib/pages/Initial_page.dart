@@ -9,13 +9,13 @@ class InitialPage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(
-          'assets/Logo.svg',
-          semanticsLabel: 'Efirit',
-          height: 350,
-          colorFilter: ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
-          // theme: SvgTheme(currentColor: Theme.of(context).primaryColor),
-        ),
+        // child: SvgPicture.asset(
+        //   'assets/Logo.svg',
+        //   semanticsLabel: 'Efirit',
+        //   height: 350,
+        //   colorFilter: ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
+        //   // theme: SvgTheme(currentColor: Theme.of(context).primaryColor),
+        // ),
       ),
     );
   }

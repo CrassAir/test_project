@@ -138,5 +138,5 @@ type Query {
         workingHoursStart: Float = null
     ): ChargingPointPagination!
 
-    chargingPoints(id: String!): ChargingPoints!
+    chargingPoint(id: String!): ChargingPoint!
 }

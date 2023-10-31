@@ -8,6 +8,8 @@ part of 'charging_points.var.gql.dart';
 
 Serializer<GChargingPointsVars> _$gChargingPointsVarsSerializer =
     new _$GChargingPointsVarsSerializer();
+Serializer<GChargingPointVars> _$gChargingPointVarsSerializer =
+    new _$GChargingPointVarsSerializer();
 
 class _$GChargingPointsVarsSerializer
     implements StructuredSerializer<GChargingPointsVars> {
@@ -52,6 +54,48 @@ class _$GChargingPointsVarsSerializer
         case 'limit':
           result.limit = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GChargingPointVarsSerializer
+    implements StructuredSerializer<GChargingPointVars> {
+  @override
+  final Iterable<Type> types = const [GChargingPointVars, _$GChargingPointVars];
+  @override
+  final String wireName = 'GChargingPointVars';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GChargingPointVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GChargingPointVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GChargingPointVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -158,6 +202,91 @@ class GChargingPointsVarsBuilder
                 offset, r'GChargingPointsVars', 'offset'),
             limit: BuiltValueNullFieldError.checkNotNull(
                 limit, r'GChargingPointsVars', 'limit'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GChargingPointVars extends GChargingPointVars {
+  @override
+  final String id;
+
+  factory _$GChargingPointVars(
+          [void Function(GChargingPointVarsBuilder)? updates]) =>
+      (new GChargingPointVarsBuilder()..update(updates))._build();
+
+  _$GChargingPointVars._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'GChargingPointVars', 'id');
+  }
+
+  @override
+  GChargingPointVars rebuild(
+          void Function(GChargingPointVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GChargingPointVarsBuilder toBuilder() =>
+      new GChargingPointVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GChargingPointVars && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GChargingPointVars')..add('id', id))
+        .toString();
+  }
+}
+
+class GChargingPointVarsBuilder
+    implements Builder<GChargingPointVars, GChargingPointVarsBuilder> {
+  _$GChargingPointVars? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GChargingPointVarsBuilder();
+
+  GChargingPointVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GChargingPointVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GChargingPointVars;
+  }
+
+  @override
+  void update(void Function(GChargingPointVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GChargingPointVars build() => _build();
+
+  _$GChargingPointVars _build() {
+    final _$result = _$v ??
+        new _$GChargingPointVars._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'GChargingPointVars', 'id'));
     replace(_$result);
     return _$result;
   }

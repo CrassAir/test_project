@@ -78,3 +78,66 @@ abstract class GChargingPointsReq
         json,
       );
 }
+
+abstract class GChargingPointReq
+    implements
+        Built<GChargingPointReq, GChargingPointReqBuilder>,
+        _i1.OperationRequest<_i2.GChargingPointData, _i3.GChargingPointVars> {
+  GChargingPointReq._();
+
+  factory GChargingPointReq([Function(GChargingPointReqBuilder b) updates]) =
+      _$GChargingPointReq;
+
+  static void _initializeBuilder(GChargingPointReqBuilder b) => b
+    ..operation = _i4.Operation(
+      document: _i5.document,
+      operationName: 'ChargingPoint',
+    )
+    ..executeOnListen = true;
+
+  @override
+  _i3.GChargingPointVars get vars;
+  @override
+  _i4.Operation get operation;
+  @override
+  _i4.Request get execRequest => _i4.Request(
+        operation: operation,
+        variables: vars.toJson(),
+      );
+
+  @override
+  String? get requestId;
+  @override
+  @BuiltValueField(serialize: false)
+  _i2.GChargingPointData? Function(
+    _i2.GChargingPointData?,
+    _i2.GChargingPointData?,
+  )? get updateResult;
+  @override
+  _i2.GChargingPointData? get optimisticResponse;
+  @override
+  String? get updateCacheHandlerKey;
+  @override
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  @override
+  _i1.FetchPolicy? get fetchPolicy;
+  @override
+  bool get executeOnListen;
+  @override
+  _i2.GChargingPointData? parseData(Map<String, dynamic> json) =>
+      _i2.GChargingPointData.fromJson(json);
+
+  static Serializer<GChargingPointReq> get serializer =>
+      _$gChargingPointReqSerializer;
+
+  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
+        GChargingPointReq.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GChargingPointReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(
+        GChargingPointReq.serializer,
+        json,
+      );
+}

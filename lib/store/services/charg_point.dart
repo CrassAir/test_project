@@ -25,6 +25,11 @@ class ChargingPointService extends GetxService {
     return client.request(chargingPointsReq);
   }
 
+  Stream<OperationResponse<GChargingPointData, GChargingPointVars>>? getChargingPoint(String id) {
+    final chargingPointReq = GChargingPointReq((b) => b..vars.id = id);
+    return client.request(chargingPointReq);
+  }
+
   void getNextChargingPoints(int offset) {
     final nextReviewsReq = chargingPointsReq.rebuild(
       (b) => b

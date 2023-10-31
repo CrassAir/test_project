@@ -31,3 +31,26 @@ abstract class GChargingPointsVars
         json,
       );
 }
+
+abstract class GChargingPointVars
+    implements Built<GChargingPointVars, GChargingPointVarsBuilder> {
+  GChargingPointVars._();
+
+  factory GChargingPointVars([Function(GChargingPointVarsBuilder b) updates]) =
+      _$GChargingPointVars;
+
+  String get id;
+  static Serializer<GChargingPointVars> get serializer =>
+      _$gChargingPointVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GChargingPointVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GChargingPointVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GChargingPointVars.serializer,
+        json,
+      );
+}

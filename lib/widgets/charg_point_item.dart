@@ -27,7 +27,7 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  widget.data.cpType!,
+                  '${widget.data.cpType}'.toUpperCase(),
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               )),
@@ -45,35 +45,32 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          '№${widget.data.cpNumber}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(color: Theme.of(context).disabledColor),
-                        ),
+                        Text('№${widget.data.cpNumber}', style: Theme.of(context).textTheme.titleSmall),
                         Card(
                             color: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
-                              child: Text('15 ₽/кВт*ч'),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+                              child: Text(
+                                  '${widget.data.connectors.data[0]?.tariffs[0].price} ${widget.data.connectors.data[0]?.tariffs[0].uom}'),
                             )),
                       ],
                     ),
-                    widget.data.statusId == 1 ? const SizedBox() : Flexible(
-                      child: Card(
-                          color: status['color'],
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
-                            child: Text(
-                              status['title']!,
-                              style: const TextStyle(color: Colors.white),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          )),
-                    ),
+                    widget.data.statusId == 1
+                        ? const SizedBox()
+                        : Flexible(
+                            child: Card(
+                                color: status['color'],
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+                                  child: Text(
+                                    status['title']!,
+                                    style: const TextStyle(color: Colors.white),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                )),
+                          ),
                   ],
                 ),
                 Flex(
@@ -93,7 +90,7 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
                     ),
                   ],
                 ),
-                Text(address, style: Theme.of(context).textTheme.titleSmall),
+                Text(address, style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.black)),
               ],
             ),
           ),

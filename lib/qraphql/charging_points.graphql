@@ -2,6 +2,7 @@ query ChargingPoints($offset:Int!, $limit:Int!) {
     chargingPoints(offset: $offset, limit: $limit) {
         count
         data {
+            id
             cpType
             cpNumber
             power
@@ -9,6 +10,50 @@ query ChargingPoints($offset:Int!, $limit:Int!) {
             location {
                 title
                 address
+            }
+            connectors {
+                data {
+                    tariffs {
+                        price
+                        uom
+                    }
+                }
+            }
+        }
+    }
+}
+
+query ChargingPoint($id: String!) {
+    chargingPoint(id: $id) {
+        id
+        cpType
+        model
+        power
+        statusId
+        cpNumber
+        location {
+            title
+            address
+            parkingAccess
+            latitude
+            longitude
+            workingHoursStart
+            workingHoursEnd
+        }
+        connectors {
+            data {
+                amperage
+                id
+                number
+                statusId
+                plugType
+                type
+                tariffs {
+                    id
+                    price
+                    uom
+                }
+
             }
         }
     }

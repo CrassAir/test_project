@@ -34,6 +34,7 @@ class Styles {
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xffE1E000), primary: const Color(0xffE1E000)),
       cardColor: const Color(0xffF5F5F5),
       cardTheme: const CardTheme(elevation: 0, color: Color(0xffF5F5F5)),
+      textTheme: TextTheme(titleSmall: TextStyle(color: Theme.of(context).disabledColor)),
       // chipTheme: ChipThemeData(
       //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       //     side: BorderSide.none,
