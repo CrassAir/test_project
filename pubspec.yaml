@@ -22,6 +22,7 @@ dependencies:
   ferry: ^0.14.2+1
   gql_http_link: ^1.0.1
   responsive_grid: ^2.4.4
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

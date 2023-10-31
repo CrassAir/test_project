@@ -28,12 +28,25 @@ class _ChargingPointDetailPageState extends State<ChargingPointDetailPage> {
     });
   }
 
+  void handleFavorite() {
+    if (ctrl.chargPoint != null) {
+      ctrl.setFavorites(ctrl.chargPoint!.value.id);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(widget.title),
-          actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/heart.svg'))]),
+      appBar: AppBar(title: Text(widget.title), actions: [
+        ctrl.obx((state) => IconButton(
+            onPressed: handleFavorite,
+            icon: ctrl.favorite.contains(ctrl.chargPoint?.value.id)
+                ? SvgPicture.asset(
+                    'assets/heart_fill.svg',
+                    height: 30
+                  )
+                : SvgPicture.asset('assets/heart.svg')))
+      ]),
       body: ctrl.obx((state) {
         var chargPoint = ctrl.chargPoint?.value;
         if (chargPoint == null) return SizedBox();
