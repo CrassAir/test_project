@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:responsive_grid/responsive_grid.dart';
+import 'package:test_project/pages/charging_point_detail/cp_body.dart';
+import 'package:test_project/pages/charging_point_detail/cp_connector_card.dart';
 import 'package:test_project/pages/charging_point_detail/cp_header.dart';
 import 'package:test_project/store/controllers/charg_point.dart';
 import 'package:test_project/widgets/time_linear.dart';
@@ -27,48 +31,29 @@ class _ChargingPointDetailPageState extends State<ChargingPointDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+          title: Text(widget.title),
+          actions: [IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/heart.svg'))]),
       body: ctrl.obx((state) {
         var chargPoint = ctrl.chargPoint?.value;
         if (chargPoint == null) return SizedBox();
-        return Flex(direction: Axis.vertical, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          CPDetailHeader(chargPoint: chargPoint),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                children: [
-                  Text('Время работы', style: Theme.of(context).textTheme.titleSmall),
-                  TimeLinear(
-                    startTime: chargPoint.location.workingHoursStart,
-                    endTime: chargPoint.location.workingHoursEnd,
-                    height: 5,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                  ),
-                ],
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          child: Flex(direction: Axis.vertical, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            CPDetailHeader(chargPoint: chargPoint),
+            const SizedBox(height: 20),
+            CPDetailBody(chargPoint: chargPoint),
+            const SizedBox(height: 20),
+            SizedBox(
+              height: 350,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: chargPoint.connectors.data.length,
+                itemBuilder: (context, index) => CPConnectorCard(connector: chargPoint.connectors.data[index]!),
               ),
-
-              Text('Адрес', style: Theme.of(context).textTheme.titleSmall),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('${chargPoint.location.address}', style: Theme.of(context).textTheme.titleMedium),
-                  Row(
-                    children: [
-                      Text('${chargPoint.location.longitude} ${chargPoint.location.latitude}',
-                          style: Theme.of(context).textTheme.titleSmall),
-                      IconButton(onPressed: () {}, icon: Icon(Icons.copy)),
-                    ],
-                  ),
-                ],
-              ),
-              Text('Парковка', style: Theme.of(context).textTheme.titleSmall),
-            ],
-          ),
-        ]);
+            ),
+          ]),
+        );
       },
           onLoading: Center(
               child: CircularProgressIndicator(

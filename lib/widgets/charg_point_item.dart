@@ -14,7 +14,7 @@ class ChargingPointItem extends StatefulWidget {
 class _ChargingPointItemState extends State<ChargingPointItem> {
   @override
   Widget build(BuildContext context) {
-    var status = statusChoises[widget.data.statusId];
+    var status = statusChoices[widget.data.statusId];
     var address = widget.data.location.address.substring(7);
     return Flex(
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -908,6 +908,13 @@ class _$GChargingPointData_chargingPoint_connectors_dataSerializer
         ..add('statusId')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.status;
+    if (value != null) {
+      result
+        ..add('status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.plugType;
     if (value != null) {
       result
@@ -921,6 +928,12 @@ class _$GChargingPointData_chargingPoint_connectors_dataSerializer
         ..add('type')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.typeId;
+    if (value != null) {
+      result
+        ..add('typeId')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -958,6 +971,10 @@ class _$GChargingPointData_chargingPoint_connectors_dataSerializer
           result.statusId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'plugType':
           result.plugType = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -965,6 +982,10 @@ class _$GChargingPointData_chargingPoint_connectors_dataSerializer
         case 'type':
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'typeId':
+          result.typeId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'tariffs':
           result.tariffs.replace(serializers.deserialize(value,
@@ -2804,9 +2825,13 @@ class _$GChargingPointData_chargingPoint_connectors_data
   @override
   final int? statusId;
   @override
+  final String? status;
+  @override
   final String? plugType;
   @override
   final String? type;
+  @override
+  final int? typeId;
   @override
   final BuiltList<GChargingPointData_chargingPoint_connectors_data_tariffs>
       tariffs;
@@ -2825,8 +2850,10 @@ class _$GChargingPointData_chargingPoint_connectors_data
       required this.id,
       this.number,
       this.statusId,
+      this.status,
       this.plugType,
       this.type,
+      this.typeId,
       required this.tariffs})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(G__typename,
@@ -2857,8 +2884,10 @@ class _$GChargingPointData_chargingPoint_connectors_data
         id == other.id &&
         number == other.number &&
         statusId == other.statusId &&
+        status == other.status &&
         plugType == other.plugType &&
         type == other.type &&
+        typeId == other.typeId &&
         tariffs == other.tariffs;
   }
 
@@ -2870,8 +2899,10 @@ class _$GChargingPointData_chargingPoint_connectors_data
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, number.hashCode);
     _$hash = $jc(_$hash, statusId.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, plugType.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, typeId.hashCode);
     _$hash = $jc(_$hash, tariffs.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -2886,8 +2917,10 @@ class _$GChargingPointData_chargingPoint_connectors_data
           ..add('id', id)
           ..add('number', number)
           ..add('statusId', statusId)
+          ..add('status', status)
           ..add('plugType', plugType)
           ..add('type', type)
+          ..add('typeId', typeId)
           ..add('tariffs', tariffs))
         .toString();
   }
@@ -2919,6 +2952,10 @@ class GChargingPointData_chargingPoint_connectors_dataBuilder
   int? get statusId => _$this._statusId;
   set statusId(int? statusId) => _$this._statusId = statusId;
 
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
+
   String? _plugType;
   String? get plugType => _$this._plugType;
   set plugType(String? plugType) => _$this._plugType = plugType;
@@ -2926,6 +2963,10 @@ class GChargingPointData_chargingPoint_connectors_dataBuilder
   String? _type;
   String? get type => _$this._type;
   set type(String? type) => _$this._type = type;
+
+  int? _typeId;
+  int? get typeId => _$this._typeId;
+  set typeId(int? typeId) => _$this._typeId = typeId;
 
   ListBuilder<GChargingPointData_chargingPoint_connectors_data_tariffs>?
       _tariffs;
@@ -2949,8 +2990,10 @@ class GChargingPointData_chargingPoint_connectors_dataBuilder
       _id = $v.id;
       _number = $v.number;
       _statusId = $v.statusId;
+      _status = $v.status;
       _plugType = $v.plugType;
       _type = $v.type;
+      _typeId = $v.typeId;
       _tariffs = $v.tariffs.toBuilder();
       _$v = null;
     }
@@ -2987,8 +3030,10 @@ class GChargingPointData_chargingPoint_connectors_dataBuilder
                   r'GChargingPointData_chargingPoint_connectors_data', 'id'),
               number: number,
               statusId: statusId,
+              status: status,
               plugType: plugType,
               type: type,
+              typeId: typeId,
               tariffs: tariffs.build());
     } catch (_) {
       late String _$failedField;

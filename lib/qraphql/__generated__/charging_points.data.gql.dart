@@ -414,8 +414,10 @@ abstract class GChargingPointData_chargingPoint_connectors_data
   String get id;
   String? get number;
   int? get statusId;
+  String? get status;
   String? get plugType;
   String? get type;
+  int? get typeId;
   BuiltList<GChargingPointData_chargingPoint_connectors_data_tariffs>
       get tariffs;
   static Serializer<GChargingPointData_chargingPoint_connectors_data>

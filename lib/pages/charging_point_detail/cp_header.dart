@@ -8,7 +8,7 @@ class CPDetailHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var status = statusChoises[chargPoint.statusId];
+    var status = statusChoices[chargPoint.statusId];
     return Flex(
       direction: Axis.vertical,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,12 +54,12 @@ class CPDetailHeader extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2),
                     child: Text(
                       '${chargPoint.cpType}'.toUpperCase(),
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   )),
             ),
             const SizedBox(width: 5),
-            Text('${chargPoint.power} кВт', style: Theme.of(context).textTheme.titleMedium),
+            Text('${chargPoint.power?.round()} кВт', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
       ],

@@ -21,6 +21,7 @@ dependencies:
   flutter_svg: ^2.0.7
   ferry: ^0.14.2+1
   gql_http_link: ^1.0.1
+  responsive_grid: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -29,6 +30,7 @@ dev_dependencies:
   ferry_generator: ^0.8.1
   build_runner: ^2.4.6
   flutter_lints: ^2.0.0
+
 
 flutter:
 

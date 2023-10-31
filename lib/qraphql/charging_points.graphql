@@ -46,8 +46,10 @@ query ChargingPoint($id: String!) {
                 id
                 number
                 statusId
+                status
                 plugType
                 type
+                typeId
                 tariffs {
                     id
                     price
