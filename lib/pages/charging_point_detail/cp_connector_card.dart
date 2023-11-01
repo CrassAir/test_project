@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project/qraphql/__generated__/charging_points.data.gql.dart';
-import 'package:test_project/store/controllers/charg_point.dart';
+import 'package:test_project/store/choices.dart';
 
 class CPConnectorCard extends StatelessWidget {
   const CPConnectorCard({Key? key, required this.connector}) : super(key: key);

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test_project/qraphql/__generated__/charging_points.data.gql.dart';
-import 'package:test_project/store/controllers/charg_point.dart';
+import 'package:test_project/store/choices.dart';
+import 'package:test_project/store/controllers/charg_points.dart';
+import 'package:test_project/store/controllers/favorite.dart';
 
 class ChargingPointItem extends StatefulWidget {
   const ChargingPointItem({super.key, required this.data});
@@ -14,7 +16,9 @@ class ChargingPointItem extends StatefulWidget {
 }
 
 class _ChargingPointItemState extends State<ChargingPointItem> {
-  final ChargingPointCtrl ctrl = Get.find();
+  final ChargingPointsCtrl ctrl = Get.find();
+  final FavoriteCtrl favoriteCtrl = Get.find();
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +94,7 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 40),
-                      child: ctrl.favorite.contains(widget.data.id) ? SvgPicture.asset('assets/heart_fill.svg') : const SizedBox(),
+                      child: favoriteCtrl.favorite.contains(widget.data.id) ? SvgPicture.asset('assets/heart_fill.svg') : const SizedBox(),
                     ),
                   ],
                 ),

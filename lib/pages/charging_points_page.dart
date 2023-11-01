@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_project/pages/charging_point_detail/cp_detail_page.dart';
 import 'package:test_project/store/controllers/charg_point.dart';
+import 'package:test_project/store/controllers/charg_points.dart';
 import 'package:test_project/widgets/charg_point_item.dart';
 import 'package:test_project/widgets/search_bar.dart';
 
@@ -14,7 +15,8 @@ class ChargingPage extends StatefulWidget {
 }
 
 class _ChargingPageState extends State<ChargingPage> {
-  final ChargingPointCtrl ctrl = Get.find();
+  final ChargingPointsCtrl ctrl = Get.find();
+  final ChargingPointCtrl chargingPointCtrl = Get.find();
   var scrollController = ScrollController();
   final platform = GetPlatform.isWeb;
 
@@ -66,7 +68,7 @@ class _ChargingPageState extends State<ChargingPage> {
                                 useRootNavigator: true,
                                 closedColor: Theme.of(context).cardColor,
                                 closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                onClosed: (data) => ctrl.clearChargPoint(),
+                                onClosed: (data) => chargingPointCtrl.clearChargPoint(),
                                 closedBuilder: (context, action) => ChargingPointItem(data: ctrl.chargPoints[index]!),
                                 openBuilder: (context, action) => ChargingPointDetailPage(
                                     id: ctrl.chargPoints[index]!.id, title: ctrl.chargPoints[index]!.location.title),

@@ -7,29 +7,28 @@ import 'package:test_project/widgets/time_linear.dart';
 class CPDetailBody extends StatelessWidget {
   CPDetailBody({Key? key, required this.chargPoint}) : super(key: key);
   final GChargingPointData_chargingPoint chargPoint;
-  final platform = GetPlatform.isWeb;
 
 
   @override
   Widget build(BuildContext context) {
-    double responsibleWidth = MediaQuery.of(context).size.width > 800 ? 500 : double.infinity;
+    bool lg = MediaQuery.of(context).size.width > 500;
     return SizedBox(
-      width: platform ? responsibleWidth : double.infinity,
+      width: lg ? 500 : double.infinity,
       child: ResponsiveGridRow(
         children: [
-          ResponsiveGridCol(xs: 6, child: Text('Время работы', style: Theme.of(context).textTheme.titleSmall)),
+          ResponsiveGridCol(xs: 4, child: Text('Время работы', style: Theme.of(context).textTheme.titleSmall)),
           ResponsiveGridCol(
-            xs: 6,
+            xs: 8,
             child: TimeLinear(
               startTime: chargPoint.location.workingHoursStart,
               endTime: chargPoint.location.workingHoursEnd,
               height: 5,
-              width: MediaQuery.of(context).size.width * 0.5,
+              width: lg ? 500 : MediaQuery.of(context).size.width * 0.65,
             ),
           ),
-          ResponsiveGridCol(xs: 6, child: Text('Адрес', style: Theme.of(context).textTheme.titleSmall)),
+          ResponsiveGridCol(xs: 4, child: Text('Адрес', style: Theme.of(context).textTheme.titleSmall)),
           ResponsiveGridCol(
-            xs: 6,
+            xs: 8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,9 +45,9 @@ class CPDetailBody extends StatelessWidget {
               ],
             ),
           ),
-          ResponsiveGridCol(xs: 6, child: Text('Парковка', style: Theme.of(context).textTheme.titleSmall)),
+          ResponsiveGridCol(xs: 4, child: Text('Парковка', style: Theme.of(context).textTheme.titleSmall)),
           ResponsiveGridCol(
-              xs: 6,
+              xs: 8,
               child:
               Text('${chargPoint.location.parkingAccess}', style: Theme.of(context).textTheme.titleSmall)),
         ],
