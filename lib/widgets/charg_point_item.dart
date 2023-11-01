@@ -19,7 +19,6 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
   final ChargingPointsCtrl ctrl = Get.find();
   final FavoriteCtrl favoriteCtrl = Get.find();
 
-
   @override
   Widget build(BuildContext context) {
     var status = statusChoices[widget.data.statusId];
@@ -92,9 +91,13 @@ class _ChargingPointItemState extends State<ChargingPointItem> {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 40),
-                      child: favoriteCtrl.favorite.contains(widget.data.id) ? SvgPicture.asset('assets/heart_fill.svg') : const SizedBox(),
+                    Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.only(right: 40),
+                        child: favoriteCtrl.favorite.contains(widget.data.id)
+                            ? SvgPicture.asset('assets/heart_fill.svg')
+                            : const SizedBox(),
+                      ),
                     ),
                   ],
                 ),

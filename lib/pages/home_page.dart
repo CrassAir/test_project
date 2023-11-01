@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
+      backgroundColor: Colors.white,
       extendBody: true,
       bottomNavigationBar: const NavBar(),
       body: Navigator(
